@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
+
   <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
     <title>Spoti'stat</title>
+
   </head>
+
   <body>
+
     <header class="header_modif container-fluid">
       <h1 class="display-5 fw-bold">Les musiques de Dylan</h1>
       <p class="lead">blblbl</p>
@@ -15,11 +20,23 @@
 
     <main class="container-xxl">
       <!-- Container-xxl permet de fixer la largeur de 1320px si la largeur de la page est supérieur à 1400px sinon, la largeur se met en 100% -->
-      <h1> TEST </h1>
-      <p> blblbllbl </p>
+      <!-- https://getbootstrap.com/docs/5.0/layout/containers/ -->
+
+      <div class="chart_bloc_top10"> <!-- Bloc principal du top 10 (c'est tetris) -->
+        <div class="chart_titre_top10">Top 10 des Artistes</div>
+        <div class="p-4">
+        <!-- p pour padding et 4 pour 1.5rem -->
+        <!-- https://getbootstrap.com/docs/4.0/utilities/spacing/ -->
+
+          <canvas id="artistChart"></canvas>
+        </div>
+      </div>
+
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   </body>
 </html>

@@ -1,4 +1,4 @@
-.header_modif {
+.header_modif{
     background-color: #0D6EFD;
     color: white;
     display: flex;
@@ -11,8 +11,31 @@
     padding-bottom: 48px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 390px){
     .header_modif {
       height: 260px;
     }
+  }
+
+  .chart_bloc_top10{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.176); /* 0,176 pour un opacité de 17 */
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
+    max-width: 1320px;
+    padding: 0; /* Il supprime tout les espaces intérieur */
+    overflow: hidden; /* force les bords à se coller */
+  }
+  
+  .chart_titre_top10{
+    color: white;
+    background-color: #0D6EFD;
+    padding: 8px 16px 9px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+    margin: 0; /* Il supprime les marges */
+  }  
+
+  canvas{
+    width: 100% !important;
+    height: auto !important;
   }
