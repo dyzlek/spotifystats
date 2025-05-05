@@ -1,4 +1,4 @@
-.custom-header {
+.header_modif {
     background-color: #0D6EFD;
     color: white;
     display: flex;
@@ -7,4 +7,12 @@
     align-items: center;
     text-align: center;
     height: 216px;
+    padding-top: 47px;
+    padding-bottom: 48px;
+  }
+
+  @media (max-width: 390px) {
+    .header_modif {
+      height: 260px;
+    }
   }
