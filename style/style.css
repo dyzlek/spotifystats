@@ -1,0 +1,10 @@
+.custom-header {
+    background-color: #0D6EFD;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 216px;
+  }
