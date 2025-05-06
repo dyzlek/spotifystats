@@ -60,18 +60,25 @@ fetch("data/data.json")
                 }
             },
 
-            plugins:{
-                legend:{ display: false },
-                title:{
+            plugins: {
+                legend: { display: false },
+                title: {
                     display: true,
                     text: "Top 10 des artistes (nombre de morceaux)",
-                    font:{
-                        size: 18
-                    },
-                    padding:{
+                    font: {
+                        size: 12,
+                        lineHeight: 1.1
+                    }, 
+                    padding: {
                         top: 10,
                         bottom: 10
                     }
+                },
+
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    autoPadding: true
                 }
             },
 
@@ -130,7 +137,8 @@ fetch("data/data.json")
                     display: true,
                     text: "Distribution des genres musicaux",
                     font: {
-                        size: 18
+                        size: 12,
+                        lineHeight: 1.1
                     },
                     padding: {
                         top: 10,
@@ -138,7 +146,17 @@ fetch("data/data.json")
                     }
                 },
                 legend: {
-                    position: 'right'
+                    position: 'right',
+                    labels: {
+                        boxWidth: 15,
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                responsive: true,
+                layout: {
+                    autoPadding: true
                 }
             },
             responsive: true,

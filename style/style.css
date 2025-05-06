@@ -9,34 +9,44 @@
     height: 216px;
     padding-top: 47px;
     padding-bottom: 48px;
-  }
+}
 
-  @media (max-width: 390px){
+  @media (max-width: 768px){
     .header_modif {
-      height: 260px;
+        height: 260px;
     }
-    canvas{
-        width: auto !important;
-        height: 200px !important;
+    .graphique {
+        flex-direction: column;
+        align-items: center;
     }
-  }
+    .chart_bloc_graph {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+    canvas {
+        width: 100% !important;
+        height: 300px !important;
+    }
+    }
 
-  .graphique{
+.graphique {
     display: flex;
-    flex-direction: column;
-    gap: 24px; 
+    justify-content: space-between;
     margin-top: 24px;
-  }
+    width: 100%;
+}
 
-  .chart_bloc_graph{
+.chart_bloc_graph {
     background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.176); /* 0,176 pour un opacité de 17 */
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
-    max-width: 1320px;
-    padding: 0; /* Il supprime tout les espaces intérieur */
-    overflow: hidden; /* force les bords à se coller */
-  }
+    border: 1px solid rgba(0, 0, 0, 0.176);
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
+        max-width: 1320px;
+        padding: 0;
+        overflow: hidden;
+        width: 48%; 
+        min-width: 300px;
+      }
   
   .chart_titre_top10{
     color: white;
@@ -56,5 +66,5 @@
 
   canvas{
     width: auto !important;
-    height: 400px !important;
+    height: 300px !important;
   }
