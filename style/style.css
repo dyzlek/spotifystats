@@ -47,6 +47,14 @@
         width: 48%; 
         min-width: 300px;
       }
+
+      .chart_bloc_morceaux {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.176);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
+            margin-top: 64px;
+          }      
   
   .chart_titre_top10{
     color: white;
@@ -64,7 +72,50 @@
     margin: 0; /* Il supprime les marges */
   }
 
+  .chart_titre_morceaux{
+    color: white;
+    background-color: #0DCAF0;
+    padding: 8px 16px 9px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+    margin: 0; /* Il supprime les marges */
+  }
+
   canvas{
     width: auto !important;
     height: 300px !important;
+  }
+
+  .btn-details {
+    background-color: #0D6EFD;
+    color: white;
+    border: 1px solid #0D6EFD;
+    border-radius: 4px;
+    padding: 5px 9px;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-details:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+  }
+
+
+#trackTable td,
+#trackTable th {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+#trackTable td,
+#trackTable th {
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#trackTable thead th {
+    background-color: #e9ecef; 
   }

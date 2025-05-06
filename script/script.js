@@ -5,6 +5,29 @@ fetch("data/data.json")
 // https://reqbin.com/code/javascript/wc3qbk0b/javascript-fetch-json-example
 
 .then(tracks =>{
+
+    const sortedTracks = [...tracks].sort((a, b) => b.popularity - a.popularity).slice(0, 50);
+
+const tbody = document.querySelector('#trackTable tbody');
+
+sortedTracks.forEach(track => {
+  const row = document.createElement('tr');
+
+  const titre = `<td>${track.name}</td>`;
+  const artiste = `<td>${track.artists.map(a => a.name).join(', ')}</td>`;
+  const album = `<td>${track.album.name}</td>`;
+  const action = `
+    <td>
+      <button class="btn btn-details">
+        <i class="bi bi-info-circle"></i> Détails
+      </button>
+    </td>
+  `;
+
+  row.innerHTML = titre + artiste + album + action;
+  tbody.appendChild(row);
+});
+
 // Tableau d'objets
 
     const artistCount = {};
@@ -166,3 +189,6 @@ fetch("data/data.json")
 
 })
 // https://www.chartjs.org/docs/latest/
+
+// Tri des morceaux du plus populaire au moins
+
