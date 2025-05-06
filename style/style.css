@@ -15,9 +15,20 @@
     .header_modif {
       height: 260px;
     }
+    canvas{
+        width: auto !important;
+        height: 200px !important;
+    }
   }
 
-  .chart_bloc_top10{
+  .graphique{
+    display: flex;
+    flex-direction: column;
+    gap: 24px; 
+    margin-top: 24px;
+  }
+
+  .chart_bloc_graph{
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.176); /* 0,176 pour un opacité de 17 */
     border-radius: 6px;
@@ -33,9 +44,17 @@
     padding: 8px 16px 9px 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.176);
     margin: 0; /* Il supprime les marges */
-  }  
+  }
+
+  .chart_titre_genre{
+    color: white;
+    background-color: #198754;
+    padding: 8px 16px 9px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+    margin: 0; /* Il supprime les marges */
+  }
 
   canvas{
-    width: 100% !important;
-    height: auto !important;
+    width: auto !important;
+    height: 400px !important;
   }

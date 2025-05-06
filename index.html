@@ -21,15 +21,24 @@
     <main class="container-xxl">
       <!-- Container-xxl permet de fixer la largeur de 1320px si la largeur de la page est supérieur à 1400px sinon, la largeur se met en 100% -->
       <!-- https://getbootstrap.com/docs/5.0/layout/containers/ -->
+      <div class="graphique">
+        <div class="chart_bloc_graph"> <!-- Bloc principal du top 10 (c'est tetris) -->
+          <div class="chart_titre_top10">Top 10 des Artistes</div>
+          <div class="p-4">
+          <!-- p pour padding et 4 pour 1.5rem -->
+          <!-- https://getbootstrap.com/docs/4.0/utilities/spacing/ -->
 
-      <div class="chart_bloc_top10"> <!-- Bloc principal du top 10 (c'est tetris) -->
-        <div class="chart_titre_top10">Top 10 des Artistes</div>
-        <div class="p-4">
-        <!-- p pour padding et 4 pour 1.5rem -->
-        <!-- https://getbootstrap.com/docs/4.0/utilities/spacing/ -->
-
-          <canvas id="artistChart"></canvas>
+            <canvas id="artistChart"></canvas>
+          </div>
         </div>
+
+        <div class="chart_bloc_graph">
+          <div class="chart_titre_genre">Distribution des Genres</div>
+          <div class="p-4">
+            <canvas id="genreChart"></canvas> 
+          </div>
+        </div>
+        
       </div>
 
     </main>
