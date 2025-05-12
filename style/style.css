@@ -85,17 +85,9 @@
     height: 300px !important;
   }
 
-  .btn-details {
-    background-color: #0D6EFD;
-    color: white;
-    border: 1px solid #0D6EFD;
-    border-radius: 4px;
-    padding: 5px 9px;
-    font-size: 0.875rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s ease;
+  .btn-custom-size {
+    width: 78px;
+    height: 31px;
   }
   
   .btn-details:hover {

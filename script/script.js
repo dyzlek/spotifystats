@@ -17,12 +17,13 @@ sortedTracks.forEach(track => {
   const artiste = `<td>${track.artists.map(a => a.name).join(', ')}</td>`;
   const album = `<td>${track.album.name}</td>`;
   const action = `
-    <td>
-      <button class="btn btn-details">
-        <i class="bi bi-info-circle"></i> Détails
-      </button>
-    </td>
-  `;
+  <td>
+  <button class="btn btn-primary d-flex align-items-center justify-content-center" style="width: 78px; height: 31px;">
+    <i class="bi bi-info-circle me-1" style="font-size: 14px;"></i>
+    <span>Détails</span>
+  </button>
+</td>
+`;
 
   row.innerHTML = titre + artiste + album + action;
   tbody.appendChild(row);
