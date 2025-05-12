@@ -16,16 +16,19 @@ sortedTracks.forEach(track => {
     const titre = `<td data-label="Titre :">${track.name}</td>`;
     const artiste = `<td data-label="Artiste :">${track.artists.map(a => a.name).join(', ')}</td>`;
     const album = `<td data-label="Album :">${track.album.name}</td>`;
-    const action = `
-      <td data-label="Action :">
-        <button class="btn btn-primary d-flex align-items-center justify-content-center" style="width: 78px; height: 31px;">
-          <i class="bi bi-info-circle me-1" style="font-size: 14px;"></i>
-          <span>Détails</span>
-        </button>
-      </td>
-    `;
-  
-    row.innerHTML = titre + artiste + album + action;
+    row.innerHTML = titre + artiste + album;
+
+    const button = document.createElement("button");
+    button.className = "btn btn-primary d-flex align-items-center justify-content-center";
+    button.style.width = "78px";
+    button.style.height = "31px";
+    button.innerHTML = `<i class="bi bi-info-circle me-1" style="font-size: 14px;"></i><span>Détails</span>`;
+    button.addEventListener("click", () => openPopup(track));    
+
+const td = document.createElement("td");
+td.appendChild(button);
+row.appendChild(td);
+
     tbody.appendChild(row);
   });
 
@@ -193,3 +196,77 @@ sortedTracks.forEach(track => {
 
 // Tri des morceaux du plus populaire au moins
 
+function openPopup(track) {
+    document.getElementById("popup-overlay").style.display = "flex";
+    const album = track.album;
+    const artists = track.artists;
+    const albumArtists = album.artists.map(a => a.name).join(", ");
+  
+    const albumImg = album.images[0]?.url || "fallback.jpg";
+    const altText = `Pochette de l'album "${album.name}" fait par ${albumArtists}`;
+  
+    document.getElementById("popup-album-img").src = albumImg;
+    document.getElementById("popup-album-img").alt = altText;
+    document.getElementById("popup-album-name").textContent = album.name;
+    document.getElementById("popup-release-date").textContent = album.release_date;
+    document.getElementById("popup-total-tracks").textContent = album.total_tracks;
+    document.getElementById("popup-album-popularity").textContent = `${album.popularity}/100`;
+    document.getElementById("popup-title").textContent = track.name;
+    const durationMinSec = `${Math.floor(track.duration_ms / 60000)}:${String(Math.floor((track.duration_ms % 60000) / 1000)).padStart(2, "0")}`;
+    document.getElementById("popup-duration").textContent = durationMinSec;
+    document.getElementById("popup-track-popularity").textContent = `${track.popularity}/100`;
+    document.getElementById("popup-track-number").textContent = track.track_number;
+    document.getElementById("popup-explicit").textContent = track.explicit ? "Oui" : "Non";
+    const allGenres = [...new Set([
+      ...(album.genres || []),
+      ...artists.flatMap(a => a.genres || [])
+    ])];
+    document.getElementById("popup-genres").textContent = allGenres.join(", ") || "Inconnu";
+  
+    const audio = document.getElementById("popup-audio");
+    audio.src = track.preview_url || "";
+    audio.load();
+
+    document.getElementById("popup-spotify-link").href = `https://open.spotify.com/track/${track.id}`;
+  
+    const artistContainer = document.getElementById("popup-artists");
+    artistContainer.innerHTML = "";
+    artists.forEach(artist => {
+      const artistCard = document.createElement("div");
+      artistCard.className = "d-flex align-items-center mb-2";
+  
+      const img = document.createElement("img");
+      img.src = artist.images[0]?.url || "fallback.jpg";
+      img.alt = `Photo de ${artist.name}`;
+      img.style.width = "50px";
+      img.style.height = "50px";
+      img.style.objectFit = "cover";
+      img.className = "rounded me-2";
+  
+      const info = document.createElement("div");
+      info.innerHTML = `
+        <div><strong>${artist.name}</strong></div>
+        <div>Popularité : ${artist.popularity}/100</div>
+        <div>${artist.followers.total.toLocaleString()} followers</div>
+      `;
+  
+      artistCard.appendChild(img);
+      artistCard.appendChild(info);
+      artistContainer.appendChild(artistCard);
+    });
+
+    
+  }
+
+  function closePopup() {
+    const popup = document.getElementById("popup-overlay");
+    popup.style.display = "none";
+  
+    const audio = document.getElementById("popup-audio");
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+  
+  
