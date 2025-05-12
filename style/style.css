@@ -1,207 +1,176 @@
-.header_modif{
-    background-color: #0D6EFD;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 216px;
-    padding-top: 47px;
-    padding-bottom: 48px;
-}
-
-  @media (max-width: 768px){
-    .header_modif {
-        height: 260px;
-    }
-    .graphique {
-        flex-direction: column;
-        align-items: center;
-    }
-    .chart_bloc_graph {
-        width: 100%;
-        margin-bottom: 24px;
-    }
-    canvas {
-        width: 100% !important;
-        height: 300px !important;
-    }
-    }
+.header_modif {height: 216px; padding: 47px 0 48px;}
 
 .graphique {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 24px;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.chart_bloc_graph, .chart_bloc_morceaux {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.176);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
+  overflow: hidden;
 }
 
 .chart_bloc_graph {
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.176);
-        border-radius: 6px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
-        max-width: 1320px;
-        padding: 0;
-        overflow: hidden;
-        width: 48%; 
-        min-width: 300px;
-      }
-
-      .chart_bloc_morceaux {
-        background-color: white;
-        border: 1px solid rgba(0, 0, 0, 0.176);
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
-            margin-top: 64px;
-          }      
-  
-  .chart_titre_top10{
-    color: white;
-    background-color: #0D6EFD;
-    padding: 8px 16px 9px 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
-    margin: 0; /* Il supprime les marges */
-  }
-
-  .chart_titre_genre{
-    color: white;
-    background-color: #198754;
-    padding: 8px 16px 9px 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
-    margin: 0; /* Il supprime les marges */
-  }
-
-  .chart_titre_morceaux{
-    color: white;
-    background-color: #0DCAF0;
-    padding: 8px 16px 9px 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
-    margin: 0; /* Il supprime les marges */
-  }
-
-  canvas{
-    width: auto !important;
-    height: 300px !important;
-  }
-
-  .btn-custom-size {
-    width: 78px;
-    height: 31px;
-  }
-  
-  .btn-details:hover {
-    background-color: #0b5ed7;
-    border-color: #0b5ed7;
-  }
-
-
-#trackTable td,
-#trackTable th {
-  border-left: none !important;
-  border-right: none !important;
+  width: 48%;
+  min-width: 300px;
+  max-width: 1320px;
+  padding: 0;
 }
 
-#trackTable td,
-#trackTable th {
+.chart_bloc_morceaux {margin-top: 64px;}
+
+.chart_titre_top10, .chart_titre_genre, .chart_titre_morceaux {
+  color: white;
+  padding: 8px 16px 9px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+  margin: 0;
+}
+
+.chart_titre_top10 {background-color: #0D6EFD;}
+.chart_titre_genre {background-color: #198754;}
+.chart_titre_morceaux {background-color: #0DCAF0;}
+
+canvas {
+  height: 300px !important;
+  width: auto !important;
+}
+
+.btn-custom-size {
+  width: 78px;
+  height: 31px;
+}
+
+.btn-details:hover {
+  background-color: #0b5ed7;
+  border-color: #0b5ed7;
+}
+
+#trackTable td, #trackTable th {
+  border: none;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
 
-#trackTable thead th {
-    background-color: #e9ecef; 
-  }
+#trackTable thead th {background-color: #e9ecef;}
 
-  @media (max-width: 524px) {
-    #trackTable thead {
-      display: none;
-    }
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.popup-header {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.popup-divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 -20px;
+}
+
+.popup-footer {padding: 10px 0 5px;}
+
+.d-none {display: none !important;}
+
+.position-relative {
+  position: relative;
+  height: 40px !important;
+}
+
+#popup-spotify-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .header_modif {height: 260px;}
   
-    #trackTable, #trackTable tbody, #trackTable tr, #trackTable td {
-      display: block;
-      width: 100%;
-    }
-  
-    #trackTable tr {
-      border-top: 4px solid #dee2e6; 
-      border-bottom: none;
-      border-radius: 0; 
-      padding: 0; 
-      background-color: #ffffff;
-      box-shadow: none; 
-      margin-bottom: 0; 
-    }
-  
-    #trackTable td {
-      text-align: right;
-      padding: 8px 12px 8px 100px;
-      position: relative;
-    }
-  
-    #trackTable td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 12px;
-      font-weight: bold;
-      text-align: left;
-      white-space: nowrap;
-    }
-  
-    #trackTable td button {
-      margin-left: auto; 
-      display: block; 
-    }
-  }
-  
-  #popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
+  .graphique {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    z-index: 1050;
   }
   
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 900px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  .chart_bloc_graph {
+    width: 100%;
+    margin-bottom: 24px;
   }
   
-  .d-none {
-    display: none !important;
+  canvas {width: 100% !important;}
+}
+
+@media (max-width: 524px) {
+  #trackTable thead {display: none;}
+  
+  #trackTable,
+  #trackTable tbody,
+  #trackTable tr,
+  #trackTable td {
+    display: block;
+    width: 100%;
   }
   
-  .popup-header {
-    padding-bottom: 10px;
+  #trackTable tr {
+    border-top: 4px solid #dee2e6;
+    background-color: #ffffff;
   }
   
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #333;
-    cursor: pointer;
+  #trackTable td {
+    text-align: right;
+    padding: 8px 12px 8px 100px;
+    position: relative;
   }
   
-  .popup-divider {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 0 -20px; /* pour étendre jusqu'aux bords du popup (puisqu’il y a padding de 20px sur .popup-content) */
+  #trackTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
   }
   
-  .popup-footer {
-    padding-top: 10px;
-    padding-bottom: 5px;
+  #trackTable td button {
+    margin-left: auto;
+    display: block;
   }
-  
-  
+}

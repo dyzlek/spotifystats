@@ -191,6 +191,55 @@ row.appendChild(td);
         }
     });
 
+    const topAlbums = [];
+const seenAlbumIds = new Set();
+
+tracks.forEach(track => {
+  const album = track.album;
+  if (!seenAlbumIds.has(album.id)) {
+    seenAlbumIds.add(album.id);
+
+    // Récupérer uniquement le premier artiste de l'album (généralement l'artiste principal)
+    const mainArtist = album.artists[0]?.name || "Artiste inconnu";
+
+    topAlbums.push({
+      id: album.id,
+      name: album.name,
+      image: album.images[0]?.url || "fallback.jpg",
+      release_date: album.release_date,
+      total_tracks: album.total_tracks,
+      popularity: track.popularity,
+      artist: mainArtist // Affichage de l'artiste principal seulement
+    });
+  }
+});
+
+const top12 = topAlbums.sort((a, b) => b.popularity - a.popularity).slice(0, 12);
+const albumGrid = document.getElementById("popularAlbums");
+
+top12.forEach(album => {
+    const col = document.createElement("div");
+    col.className = "col";
+    col.innerHTML = `
+      <div class="card h-100 border-0 shadow-sm">
+        <img src="${album.image}" class="card-img-top rounded-top" alt="Pochette de l'album ${album.name}">
+        <div class="card-body d-flex flex-column">
+          <p class="fs-6 fw-semibold mb-1 text-truncate" title="Cliquez pour en savoir plus sur l'album ${album.name}">${album.name}</p>
+          
+          <p class="fs-7 mb-1">${album.artist}</p> 
+          
+          <p class="mb-4 small text-muted">${album.release_date}</p>
+  
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="badge bg-primary rounded-pill">${album.total_tracks} titres</span>
+            <small class="badge text-bg-success">${album.popularity}/100</small>
+          </div>
+        </div>
+      </div>
+    `;
+    albumGrid.appendChild(col);
+  });  
+
 })
 // https://www.chartjs.org/docs/latest/
 
@@ -218,11 +267,12 @@ function openPopup(track) {
 popularityCell.innerHTML = `
   <div class="d-flex align-items-center">
     <div class="progress flex-grow-1 me-2" style="height: 15px; max-width: 120px;">
-      <div class="progress-bar bg-success" role="progressbar" style="width: ${track.popularity}%;" aria-valuenow="${track.popularity}" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar bg-info" role="progressbar" style="width: ${track.popularity}%;" aria-valuenow="${track.popularity}" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <div class="fw-semibold text-nowrap">${track.popularity}/100</div>
   </div>
 `;
+
     document.getElementById("popup-track-number").textContent = track.track_number;
     document.getElementById("popup-explicit").textContent = track.explicit ? "Oui" : "Non";
     
