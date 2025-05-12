@@ -201,10 +201,10 @@ function openPopup(track) {
     const album = track.album;
     const artists = track.artists;
     const albumArtists = album.artists.map(a => a.name).join(", ");
-  
+    
     const albumImg = album.images[0]?.url || "fallback.jpg";
     const altText = `Pochette de l'album "${album.name}" fait par ${albumArtists}`;
-  
+    
     document.getElementById("popup-album-img").src = albumImg;
     document.getElementById("popup-album-img").alt = altText;
     document.getElementById("popup-album-name").textContent = album.name;
@@ -217,16 +217,28 @@ function openPopup(track) {
     document.getElementById("popup-track-popularity").textContent = `${track.popularity}/100`;
     document.getElementById("popup-track-number").textContent = track.track_number;
     document.getElementById("popup-explicit").textContent = track.explicit ? "Oui" : "Non";
+    
     const allGenres = [...new Set([
       ...(album.genres || []),
       ...artists.flatMap(a => a.genres || [])
     ])];
-    document.getElementById("popup-genres").textContent = allGenres.join(", ") || "Inconnu";
+    
+    // Vider les genres existants
+    const genresContainer = document.getElementById("popup-genres");
+    genresContainer.innerHTML = "";
+  
+    // Ajouter un badge pour chaque genre
+    allGenres.forEach(genre => {
+      const badge = document.createElement("span");
+      badge.className = "badge bg-secondary rounded-pill me-2"; // Utilisation d'un badge gris (bg-secondary)
+      badge.textContent = genre;
+      genresContainer.appendChild(badge);
+    });
   
     const audio = document.getElementById("popup-audio");
     audio.src = track.preview_url || "";
     audio.load();
-
+  
     document.getElementById("popup-spotify-link").href = `https://open.spotify.com/track/${track.id}`;
   
     const artistContainer = document.getElementById("popup-artists");
@@ -234,7 +246,7 @@ function openPopup(track) {
     artists.forEach(artist => {
       const artistCard = document.createElement("div");
       artistCard.className = "d-flex align-items-center mb-2";
-  
+    
       const img = document.createElement("img");
       img.src = artist.images[0]?.url || "fallback.jpg";
       img.alt = `Photo de ${artist.name}`;
@@ -242,22 +254,19 @@ function openPopup(track) {
       img.style.height = "50px";
       img.style.objectFit = "cover";
       img.className = "rounded me-2";
-  
+    
       const info = document.createElement("div");
       info.innerHTML = `
         <div><strong>${artist.name}</strong></div>
-        <div>Popularité : ${artist.popularity}/100</div>
-        <div>${artist.followers.total.toLocaleString()} followers</div>
+        <div>Popularité : ${artist.popularity}/100 Followers : ${artist.followers.total.toLocaleString()} </div>
       `;
-  
+    
       artistCard.appendChild(img);
       artistCard.appendChild(info);
       artistContainer.appendChild(artistCard);
     });
-
-    
   }
-
+  
   function closePopup() {
     const popup = document.getElementById("popup-overlay");
     popup.style.display = "none";
@@ -268,5 +277,4 @@ function openPopup(track) {
       audio.currentTime = 0;
     }
   }
-  
   
