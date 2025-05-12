@@ -214,7 +214,15 @@ function openPopup(track) {
     document.getElementById("popup-title").textContent = track.name;
     const durationMinSec = `${Math.floor(track.duration_ms / 60000)}:${String(Math.floor((track.duration_ms % 60000) / 1000)).padStart(2, "0")}`;
     document.getElementById("popup-duration").textContent = durationMinSec;
-    document.getElementById("popup-track-popularity").textContent = `${track.popularity}/100`;
+    const popularityCell = document.getElementById("popup-track-popularity");
+popularityCell.innerHTML = `
+  <div class="d-flex align-items-center">
+    <div class="progress flex-grow-1 me-2" style="height: 15px; max-width: 120px;">
+      <div class="progress-bar bg-success" role="progressbar" style="width: ${track.popularity}%;" aria-valuenow="${track.popularity}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="fw-semibold text-nowrap">${track.popularity}/100</div>
+  </div>
+`;
     document.getElementById("popup-track-number").textContent = track.track_number;
     document.getElementById("popup-explicit").textContent = track.explicit ? "Oui" : "Non";
     
