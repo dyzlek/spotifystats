@@ -111,3 +111,46 @@
 #trackTable thead th {
     background-color: #e9ecef; 
   }
+
+  @media (max-width: 524px) {
+    #trackTable thead {
+      display: none;
+    }
+  
+    #trackTable, #trackTable tbody, #trackTable tr, #trackTable td {
+      display: block;
+      width: 100%;
+    }
+  
+    #trackTable tr {
+      border-top: 4px solid #dee2e6; 
+      border-bottom: none;
+      border-radius: 0; 
+      padding: 0; 
+      background-color: #ffffff;
+      box-shadow: none; 
+      margin-bottom: 0; 
+    }
+  
+    #trackTable td {
+      text-align: right;
+      padding: 8px 12px 8px 100px;
+      position: relative;
+    }
+  
+    #trackTable td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 12px;
+      font-weight: bold;
+      text-align: left;
+      white-space: nowrap;
+    }
+  
+    #trackTable td button {
+      margin-left: auto; 
+      display: block; 
+    }
+  }
+  
+  

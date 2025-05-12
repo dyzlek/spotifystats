@@ -11,23 +11,23 @@ fetch("data/data.json")
 const tbody = document.querySelector('#trackTable tbody');
 
 sortedTracks.forEach(track => {
-  const row = document.createElement('tr');
-
-  const titre = `<td>${track.name}</td>`;
-  const artiste = `<td>${track.artists.map(a => a.name).join(', ')}</td>`;
-  const album = `<td>${track.album.name}</td>`;
-  const action = `
-  <td>
-  <button class="btn btn-primary d-flex align-items-center justify-content-center" style="width: 78px; height: 31px;">
-    <i class="bi bi-info-circle me-1" style="font-size: 14px;"></i>
-    <span>Détails</span>
-  </button>
-</td>
-`;
-
-  row.innerHTML = titre + artiste + album + action;
-  tbody.appendChild(row);
-});
+    const row = document.createElement('tr');
+  
+    const titre = `<td data-label="Titre :">${track.name}</td>`;
+    const artiste = `<td data-label="Artiste :">${track.artists.map(a => a.name).join(', ')}</td>`;
+    const album = `<td data-label="Album :">${track.album.name}</td>`;
+    const action = `
+      <td data-label="Action :">
+        <button class="btn btn-primary d-flex align-items-center justify-content-center" style="width: 78px; height: 31px;">
+          <i class="bi bi-info-circle me-1" style="font-size: 14px;"></i>
+          <span>Détails</span>
+        </button>
+      </td>
+    `;
+  
+    row.innerHTML = titre + artiste + album + action;
+    tbody.appendChild(row);
+  });
 
 // Tableau d'objets
 
