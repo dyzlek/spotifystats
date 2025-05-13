@@ -221,22 +221,21 @@ top12.forEach(album => {
     const col = document.createElement("div");
     col.className = "col";
     col.innerHTML = `
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="${album.image}" class="card-img-top rounded-top" alt="Pochette de l'album ${album.name}">
-        <div class="card-body d-flex flex-column">
-          <p class="fs-6 fw-semibold mb-1 text-truncate" title="Cliquez pour en savoir plus sur l'album ${album.name}">${album.name}</p>
-          
-          <p class="fs-7 mb-1">${album.artist}</p> 
-          
-          <p class="mb-4 small text-muted">${album.release_date}</p>
-  
-          <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="badge bg-primary rounded-pill">${album.total_tracks} titres</span>
-            <small class="badge text-bg-success">${album.popularity}/100</small>
-          </div>
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="overflow-hidden">
+        <img src="${album.image}" class="card-img-top rounded-top img-fluid transition transform-hover" alt="Pochette de l'album ${album.name}">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="fs-6 fw-semibold mb-1 text-truncate" title="Cliquez pour en savoir plus sur l'album ${album.name}">${album.name}</p>
+        <p class="fs-7 mb-1">${album.artist}</p> 
+        <p class="mb-4 small text-muted">${album.release_date}</p>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <span class="badge bg-primary rounded-pill">${album.total_tracks} titres</span>
+          <small class="badge text-bg-success">${album.popularity}/100</small>
         </div>
       </div>
-    `;
+    </div>
+  `;  
     albumGrid.appendChild(col);
   });  
 

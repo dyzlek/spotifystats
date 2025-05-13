@@ -122,6 +122,13 @@ canvas {
   margin-bottom: 0 !important;
 }
 
+.transform-hover {
+  transition: transform 0.3s ease;
+}
+.overflow-hidden:hover .transform-hover {
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .header_modif {height: 260px;}
   
