@@ -35,30 +35,23 @@
 .chart_titre_genre {background-color: #198754;}
 .chart_titre_morceaux {background-color: #0DCAF0;}
 
-  canvas{
-    width: auto !important;
-    height: 300px !important;
-  }
-
-  .btn-custom-size {
-    width: 78px;
-    height: 31px;
-  }
-  
-  .btn-details:hover {
-    background-color: #0b5ed7;
-    border-color: #0b5ed7;
-  }
-
-
-#trackTable td,
-#trackTable th {
-  border-left: none !important;
-  border-right: none !important;
+canvas {
+  height: 300px !important;
+  width: auto !important;
 }
 
-#trackTable td,
-#trackTable th {
+.btn-custom-size {
+  width: 78px;
+  height: 31px;
+}
+
+.btn-details:hover {
+  background-color: #0b5ed7;
+  border-color: #0b5ed7;
+}
+
+#trackTable td, #trackTable th {
+  border: none;
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
