@@ -221,6 +221,7 @@ top12.forEach(album => {
     const col = document.createElement("div");
     col.className = "col";
     col.innerHTML = `
+  <a href="https://open.spotify.com/album/${album.id}" target="_blank" class="text-decoration-none text-dark">
     <div class="card h-100 border-0 shadow-sm">
       <div class="overflow-hidden">
         <img src="${album.image}" class="card-img-top rounded-top img-fluid transition transform-hover" alt="Pochette de l'album ${album.name}">
@@ -235,7 +236,8 @@ top12.forEach(album => {
         </div>
       </div>
     </div>
-  `;  
+  </a>
+`;
     albumGrid.appendChild(col);
   });  
 
@@ -301,26 +303,42 @@ popularityCell.innerHTML = `
     const artistContainer = document.getElementById("popup-artists");
     artistContainer.innerHTML = "";
     artists.forEach(artist => {
-      const artistCard = document.createElement("div");
-      artistCard.className = "d-flex align-items-center mb-2";
-    
-      const img = document.createElement("img");
-      img.src = artist.images[0]?.url || "fallback.jpg";
-      img.alt = `Photo de ${artist.name}`;
-      img.style.width = "50px";
-      img.style.height = "50px";
-      img.style.objectFit = "cover";
-      img.className = "rounded me-2";
-    
-      const info = document.createElement("div");
-      info.innerHTML = `
-        <div><strong>${artist.name}</strong></div>
-        <div>Popularité : ${artist.popularity}/100 Followers : ${artist.followers.total.toLocaleString()} </div>
-      `;
-    
-      artistCard.appendChild(img);
-      artistCard.appendChild(info);
-      artistContainer.appendChild(artistCard);
+      const artistContainer = document.getElementById("popup-artists");
+artistContainer.innerHTML = "";
+
+artists.forEach(artist => {
+  const artistCard = document.createElement("div");
+  artistCard.className = "d-flex align-items-center mb-3";
+
+  const artistLink = document.createElement("a");
+  artistLink.href = `https://open.spotify.com/artist/${artist.id}`;
+  artistLink.target = "_blank";
+  artistLink.className = "d-inline-block me-3";
+  artistLink.style.width = "60px";
+  artistLink.style.height = "60px";
+  artistLink.style.flexShrink = "0";
+
+  const img = document.createElement("img");
+  img.src = artist.images[0]?.url || "fallback.jpg";
+  img.alt = `Photo de ${artist.name}`;
+  img.className = "img-fluid artist-img-hover";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
+
+  artistLink.appendChild(img);
+
+  const info = document.createElement("div");
+  info.innerHTML = `
+    <div><strong>${artist.name}</strong></div>
+    <div class="text-muted small">Popularité : ${artist.popularity}/100 | Followers : ${artist.followers.total.toLocaleString()}</div>
+  `;
+
+  artistCard.appendChild(artistLink);
+  artistCard.appendChild(info);
+  artistContainer.appendChild(artistCard);
+});
+
     });
   }
   

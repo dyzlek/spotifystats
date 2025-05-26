@@ -129,6 +129,14 @@ canvas {
   transform: scale(1.1);
 }
 
+.artist-img-hover {
+  transition: transform 0.3s ease;
+  border-radius: 0.5rem; /* coins arrondis */
+}
+.artist-img-hover:hover {
+  transform: scale(1.05); /* zoom léger */
+}
+
 @media (max-width: 768px) {
   .header_modif {height: 260px;}
   
