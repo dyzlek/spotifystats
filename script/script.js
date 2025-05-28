@@ -353,3 +353,4 @@ artists.forEach(artist => {
     }
   }
   
+  console.log("Hello World");
