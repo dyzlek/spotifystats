@@ -1,39 +1,16 @@
-.header_modif {height: 216px; padding: 47px 0 48px;}
-
-.graphique {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
-  width: 100%;
-}
-
-.chart_bloc_graph, .chart_bloc_morceaux {
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.176);
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
-  overflow: hidden;
+.header_modif {
+  height: 216px; 
 }
 
 .chart_bloc_graph {
   width: 48%;
   min-width: 300px;
   max-width: 1320px;
-  padding: 0;
 }
 
-.chart_bloc_morceaux {margin-top: 64px;}
-
-.chart_titre_top10, .chart_titre_genre, .chart_titre_morceaux {
-  color: white;
-  padding: 8px 16px 9px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.176);
-  margin: 0;
+.chart_bloc_morceaux {
+  margin-top: 64px;
 }
-
-.chart_titre_top10 {background-color: #0D6EFD;}
-.chart_titre_genre {background-color: #198754;}
-.chart_titre_morceaux {background-color: #0DCAF0;}
 
 canvas {
   height: 300px !important;
@@ -43,11 +20,6 @@ canvas {
 .btn-custom-size {
   width: 78px;
   height: 31px;
-}
-
-.btn-details:hover {
-  background-color: #0b5ed7;
-  border-color: #0b5ed7;
 }
 
 #trackTable td, #trackTable th {
@@ -87,17 +59,6 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #333;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  margin-left: 10px;
 }
 
 .popup-divider {
