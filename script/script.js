@@ -148,7 +148,6 @@ row.appendChild(td);
 
     new Chart(document.getElementById('genreChart'), {
         type: 'pie',
-        // Créer un graphique en camembert (miam)
 
         data: {
             labels: genreLabels,
@@ -199,7 +198,6 @@ tracks.forEach(track => {
   if (!seenAlbumIds.has(album.id)) {
     seenAlbumIds.add(album.id);
 
-    // Récupérer uniquement le premier artiste de l'album (généralement l'artiste principal)
     const mainArtist = album.artists[0]?.name || "Artiste inconnu";
 
     topAlbums.push({
@@ -209,7 +207,7 @@ tracks.forEach(track => {
       release_date: album.release_date,
       total_tracks: album.total_tracks,
       popularity: track.popularity,
-      artist: mainArtist // Affichage de l'artiste principal seulement
+      artist: mainArtist 
     });
   }
 });
@@ -242,9 +240,6 @@ top12.forEach(album => {
   });  
 
 })
-// https://www.chartjs.org/docs/latest/
-
-// Tri des morceaux du plus populaire au moins
 
 function openPopup(track) {
     document.getElementById("popup-overlay").style.display = "flex";
@@ -282,14 +277,12 @@ popularityCell.innerHTML = `
       ...artists.flatMap(a => a.genres || [])
     ])];
     
-    // Vider les genres existants
     const genresContainer = document.getElementById("popup-genres");
     genresContainer.innerHTML = "";
   
-    // Ajouter un badge pour chaque genre
     allGenres.forEach(genre => {
       const badge = document.createElement("span");
-      badge.className = "badge bg-secondary rounded-pill me-2"; // Utilisation d'un badge gris (bg-secondary)
+      badge.className = "badge bg-secondary rounded-pill me-2";
       badge.textContent = genre;
       genresContainer.appendChild(badge);
     });

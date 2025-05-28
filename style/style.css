@@ -28,7 +28,9 @@ canvas {
   border-bottom: 1px solid #dee2e6;
 }
 
-#trackTable thead th {background-color: #e9ecef;}
+#trackTable thead th {
+  background-color: #e9ecef;
+}
 
 #popup-overlay {
   position: fixed;
@@ -92,10 +94,10 @@ canvas {
 
 .artist-img-hover {
   transition: transform 0.3s ease;
-  border-radius: 0.5rem; /* coins arrondis */
+  border-radius: 0.5rem;
 }
 .artist-img-hover:hover {
-  transform: scale(1.05); /* zoom léger */
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
